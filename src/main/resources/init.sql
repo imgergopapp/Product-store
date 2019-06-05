@@ -1,3 +1,11 @@
+DROP TRIGGER IF EXISTS products_in_stock_check ON products;
+DROP TRIGGER IF EXISTS carts_quantity_check ON carts;
+DROP TRIGGER IF EXISTS order_completion_date_check ON orders;
+
+DROP FUNCTION IF EXISTS products_in_stock_check;
+DROP FUNCTION IF EXISTS carts_quantity_check;
+DROP FUNCTION IF EXISTS order_completion_date_check;
+
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS products CASCADE;
 DROP TABLE IF EXISTS carts CASCADE;
@@ -60,6 +68,45 @@ ALTER TABLE carts
 ALTER TABLE orders
 	ADD CONSTRAINT orders_fk_cart_id FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
 	ADD CONSTRAINT orders_fk_transported_id FOREIGN KEY (transporter_id) REFERENCES transporters(transporter_id);
+
+CREATE FUNCTION products_in_stock_check() RETURNS trigger
+AS '
+	BEGIN
+		IF NEW.in_stock < 0  THEN
+            RAISE EXCEPTION ''product in_stock cant be less than 0'';
+        END IF;
+        RETURN NEW;
+	END; '
+LANGUAGE plpgsql;
+
+CREATE TRIGGER products_in_stock_check BEFORE INSERT OR UPDATE ON products
+	FOR EACH ROW EXECUTE PROCEDURE products_in_stock_check();
+
+CREATE FUNCTION carts_quantity_check() RETURNS trigger
+AS '
+	BEGIN
+		IF NEW.quantity <= 0  THEN
+            RAISE EXCEPTION ''product quantity in cart cant be less than 0 or equal to 0'';
+        END IF;
+        RETURN NEW;
+	END; '
+LANGUAGE plpgsql;
+
+CREATE TRIGGER carts_quantity_check BEFORE INSERT OR UPDATE ON carts
+	FOR EACH ROW EXECUTE PROCEDURE carts_quantity_check();
+
+CREATE FUNCTION order_completion_date_check() RETURNS trigger
+AS '
+	BEGIN
+		IF NEW.order_date > NEW.completion_date THEN
+            RAISE EXCEPTION ''completion_date cant be sooner than order_date'';
+        END IF;
+        RETURN NEW;
+	END; '
+LANGUAGE plpgsql;
+
+CREATE TRIGGER order_completion_date_check BEFORE INSERT OR UPDATE ON orders
+	FOR EACH ROW EXECUTE PROCEDURE order_completion_date_check();
 
 INSERT INTO users (user_name, password, type, country, zip_code, city, street) VALUES
 	('user1', 'pw1', 'REGULAR', 'Hungary', 4000,'city1','Some street, 8'), --1
