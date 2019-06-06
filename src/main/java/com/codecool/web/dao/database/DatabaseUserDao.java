@@ -20,7 +20,8 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public User findById(int id) throws SQLException, DaoParserException {
-        String sql = "SELECT user_id, user_name, email, role, country, zip_code, city, street FROM users WHERE user_id = ?";
+        String sql = "SELECT user_id, user_name, email, role, country, zip_code, city, street FROM users " +
+            "WHERE user_id = ?;";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setInt(1, id);
             statement.execute();
