@@ -2,7 +2,6 @@ package com.codecool.web.dao.database;
 
 import com.codecool.web.dao.UserDao;
 import com.codecool.web.dao.parser.DaoParser;
-import com.codecool.web.dao.parser.DaoParserException;
 import com.codecool.web.model.Address;
 import com.codecool.web.model.Role;
 import com.codecool.web.model.User;

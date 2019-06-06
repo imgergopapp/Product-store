@@ -1,6 +1,5 @@
 package com.codecool.web.dao;
 
-import com.codecool.web.dao.parser.DaoParserException;
 import com.codecool.web.model.Address;
 import com.codecool.web.model.User;
 
