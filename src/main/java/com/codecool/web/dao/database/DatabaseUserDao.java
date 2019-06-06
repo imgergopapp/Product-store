@@ -45,7 +45,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public void registerUser(String name,String password, String email, String role, Address address) throws SQLException {
-        if (!isEmailAvailable(email)){
+        if (!isEmailUsed(email)){
             throw new SQLException("Email already used!");
         }
 
@@ -78,7 +78,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
         }
     }
 
-    private boolean isEmailAvailable(String email) throws SQLException {
+    private boolean isEmailUsed(String email) throws SQLException {
         String sql = "SELECT email FROM users " +
             "WHERE email = ?;";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
