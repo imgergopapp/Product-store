@@ -63,7 +63,15 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public boolean isRegistered(String email, String password) throws SQLException {
-        return false;
+        String sql = "SELECT email FROM users " +
+            "WHERE email = ? AND password = crypt(?, password);";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            statement.setString(2, password);
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            return resultSet.next();
+        }
     }
 
     private User fetchUser(ResultSet resultSet) throws SQLException, DaoParserException {
