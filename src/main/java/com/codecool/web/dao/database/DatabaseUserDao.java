@@ -31,6 +31,19 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
     @Override
+    public User findByEmail(String email) throws SQLException {
+        String sql = "SELECT user_id, user_name, email, role, country, zip_code, city, street FROM users " +
+            "WHERE email = ?;";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            resultSet.next();
+            return fetchUser(resultSet);
+        }
+    }
+
+    @Override
     public void registerUser(String name,String password, String email, String role, Address address) throws SQLException {
         if (!isEmailAvailable(email)){
             throw new SQLException("Email already used!");
