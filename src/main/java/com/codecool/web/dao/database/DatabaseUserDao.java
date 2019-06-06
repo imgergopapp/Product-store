@@ -51,7 +51,14 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public boolean isEmailAvailable(String email) throws SQLException {
-        return false;
+        String sql = "SELECT email FROM users " +
+            "WHERE email = ?;";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, email);
+            statement.execute();
+            ResultSet resultSet = statement.getResultSet();
+            return resultSet.next();
+        }
     }
 
     @Override
