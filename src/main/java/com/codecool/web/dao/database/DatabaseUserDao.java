@@ -34,7 +34,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     @Override
     public void registerUser(String name,String password, String email, String role, Address address) throws SQLException {
         String sql ="INSERT INTO users (user_name, password, email, role, country, zip_code, city, street) " +
-            "VALUES(?,?,?,?,?,?,?,?);";
+            "VALUES(?, crypt(?, gen_salt('bf', 9)),?,?,?,?,?,?);";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setString(1, name);
             statement.setString(1, password);
