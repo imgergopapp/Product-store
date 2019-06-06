@@ -18,7 +18,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
     @Override
-    public User findById(int id) throws SQLException, DaoParserException {
+    public User findById(int id) throws SQLException {
         String sql = "SELECT user_id, user_name, email, role, country, zip_code, city, street FROM users " +
             "WHERE user_id = ?;";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
@@ -76,7 +76,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
         }
     }
 
-    private User fetchUser(ResultSet resultSet) throws SQLException, DaoParserException {
+    private User fetchUser(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("user_id");
         String name = resultSet.getString("user_name");
         String email = resultSet.getString("email");
