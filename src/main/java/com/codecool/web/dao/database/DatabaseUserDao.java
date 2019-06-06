@@ -14,7 +14,7 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     }
 
     @Override
-    public User findById() throws SQLException {
+    public User findById(int id) throws SQLException {
         return null;
     }
 
