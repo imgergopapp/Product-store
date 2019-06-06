@@ -1,6 +1,6 @@
 package com.codecool.web.model;
 
-enum Role {
+public enum Role {
     REGULAR,
     ADMIN,
     RETAILER
