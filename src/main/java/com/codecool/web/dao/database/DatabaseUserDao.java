@@ -33,6 +33,10 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
 
     @Override
     public void registerUser(String name,String password, String email, String role, Address address) throws SQLException {
+        if (!isEmailAvailable(email)){
+            throw new SQLException("Email already used!");
+        }
+
         String sql ="INSERT INTO users (user_name, password, email, role, country, zip_code, city, street) " +
             "VALUES(?, crypt(?, gen_salt('bf', 9)),?,?,?,?,?,?);";
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
