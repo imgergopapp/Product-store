@@ -1,10 +1,15 @@
 package com.codecool.web.dao.database;
 
 import com.codecool.web.dao.UserDao;
+import com.codecool.web.dao.parser.DaoParser;
+import com.codecool.web.dao.parser.DaoParserException;
 import com.codecool.web.model.Address;
+import com.codecool.web.model.Role;
 import com.codecool.web.model.User;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DatabaseUserDao extends AbstractDao implements UserDao {
@@ -32,4 +37,19 @@ public class DatabaseUserDao extends AbstractDao implements UserDao {
     public boolean isRegistered(String email, String password) throws SQLException {
         return false;
     }
+
+    private User fetchUser(ResultSet resultSet) throws SQLException, DaoParserException {
+        int id = resultSet.getInt("user_id");
+        String name = resultSet.getString("user_name");
+        String email = resultSet.getString("email");
+        Role role = DaoParser.parseToRole(resultSet.getString("role"));
+
+        String country = resultSet.getString("country");
+        String zip_code = resultSet.getString("zip_code");
+        String city = resultSet.getString("city");
+        String street = resultSet.getString("street");
+
+        return new User(id, name, email, role, new Address(country, zip_code, city, street));
+    }
+}
 }
