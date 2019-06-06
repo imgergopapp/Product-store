@@ -19,7 +19,7 @@ CREATE TABLE users(
 	email VARCHAR(60),
 	role VARCHAR(20),
 	country VARCHAR(40),
-	zip_code INTEGER,
+	zip_code NUMERIC(4),
 	city VARCHAR(40),
 	street VARCHAR(100)
 );
@@ -48,8 +48,8 @@ CREATE TABLE transporters(
  	transporter_id SERIAL PRIMARY KEY,
     transporter_company VARCHAR(40),
  	transporter_price MONEY,
- 	zip_code_range_from INT,
-    zip_code_range_to INT
+ 	zip_code_range_from NUMERIC(4),
+    zip_code_range_to NUMERIC(4)
  );
 
 CREATE TABLE orders(
