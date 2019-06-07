@@ -26,8 +26,8 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
-    public void registerUser(String name, String password, String email, String role, Address address) throws SQLException {
-        userDao.registerUser(name,password,email,role,address);
+    public void registerUser(String name, String password, String email) throws SQLException {
+        userDao.registerUser(name,password,email);
     }
 
     @Override
