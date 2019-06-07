@@ -17,11 +17,11 @@ CREATE TABLE users(
 	user_name VARCHAR(100),
 	password VARCHAR(64),
 	email VARCHAR(60),
-	role VARCHAR(20),
-	country VARCHAR(40),
-	zip_code NUMERIC(4),
-	city VARCHAR(40),
-	street VARCHAR(100)
+	role VARCHAR(20) DEFAULT 'REGULAR',
+	country VARCHAR(40) DEFAULT 'Not set',
+	zip_code NUMERIC(4) DEFAULT 0,
+	city VARCHAR(40) DEFAULT 'Not set',
+	street VARCHAR(100) DEFAULT 'Not set'
 );
 
 CREATE TABLE products(
