@@ -9,6 +9,11 @@ function onLoad() {
     const registerButtonEl = document.getElementById('register-button');
     registerButtonEl.addEventListener('click', onRegisterButtonClicked);
 
+    const registerAccountButtonEl = document.getElementById('registration-button');
+    registerAccountButtonEl.addEventListener('click', onRegisterAccountButtonClicked)
+
     const backToLoginButtonEl = document.getElementById('back-to-login-button');
-    backToLoginButtonEl.addEventListener('click', onBackToLoginButtonClicked);
+    backToLoginButtonEl.addEventListener('click', backToLogin);
 }
+
+document.addEventListener('DOMContentLoaded', onLoad);
