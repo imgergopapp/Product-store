@@ -120,4 +120,3 @@ function setUnauthorized() {
 }
 
 
-document.addEventListener('DOMContentLoaded', onLoad);
