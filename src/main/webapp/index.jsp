@@ -7,20 +7,17 @@
         <title>Product store</title>
 
         <c:url value="/style.css" var="styleUrl"/>
+        <c:url value="/init.js" var="initScriptUrl"/>
         <c:url value="/register.js" var="registerScriptUrl"/>
         <c:url value="/login.js" var="loginScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
-        <c:url value="/welcome.js" var="welcomeScriptUrl"/>
-        <c:url value="/auth.js" var="authScriptUrl"/>
         <c:url value="/util.js" var="utilScriptUrl"/>
-        <c:url value="/init.js" var="initScriptUrl"/>
+        <c:url value="/auth.js" var="authScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${registerScriptUrl}"></script>
         <script src="${loginScriptUrl}"></script>
         <script src="${logoutScriptUrl}"></script>
-        <script src="${welcomeScriptUrl}"></script>
-        <script src="${authScriptUrl}"></script>
         <script src="${utilScriptUrl}"></script>
         <script src="${initScriptUrl}"></script>
     </head>
@@ -40,11 +37,11 @@
         <div id="register-content" class="hidden content">
             <h1>Register</h1>
             <form id="register-form" onsubmit="return false;">
+                <input type="text" name="name" placeholder="Name"><br>
                 <input type="text" name="email" placeholder="Email"><br>
                 <input type="password" name="password" placeholder="Password"><br>
-                <input type="text" name="name" placeholder="Name"><br>
-                <button id="registration-button">Register</button><br>
-                <button id="back-to-login-button">Back to Login</button><br>
+                <button id="registration-button">Register Account</button>
+                <button id="back-to-login-button">Back to login</button><br>
             </form>
         </div>
         <script src="${authScriptUrl}"></script>
