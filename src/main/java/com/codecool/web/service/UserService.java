@@ -11,5 +11,4 @@ public interface UserService {
 
     void registerUser(String name, String password, String email) throws SQLException;
 
-    boolean isRegistered(String email, String password) throws SQLException;
 }

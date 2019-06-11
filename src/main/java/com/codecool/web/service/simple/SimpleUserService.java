@@ -29,9 +29,4 @@ public class SimpleUserService implements UserService {
     public void registerUser(String name, String password, String email) throws SQLException {
         userDao.registerUser(name,password,email);
     }
-
-    @Override
-    public boolean isRegistered(String email, String password) throws SQLException {
-        return userDao.isRegistered(email,password);
-    }
 }
