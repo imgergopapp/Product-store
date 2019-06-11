@@ -14,6 +14,6 @@ public interface UserDao {
 
     boolean isRegistered(String email, String password) throws SQLException;
 
-    User updateProfile(String name, Address address) throws SQLException;
+    void updateProfile(String name, String email, Address address) throws SQLException;
 
 }
