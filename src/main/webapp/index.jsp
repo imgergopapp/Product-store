@@ -12,6 +12,7 @@
         <c:url value="/login.js" var="loginScriptUrl"/>
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <c:url value="/util.js" var="utilScriptUrl"/>
+        <c:url value="/welcome.js" var="welcomeScriptUrl"/>
         <c:url value="/auth.js" var="authScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
@@ -19,11 +20,17 @@
         <script src="${loginScriptUrl}"></script>
         <script src="${logoutScriptUrl}"></script>
         <script src="${utilScriptUrl}"></script>
+        <script src="${welcomeScriptUrl}"></script>
         <script src="${initScriptUrl}"></script>
     </head>
     <body>
-        <div id="navigation-bar" class="hidden navbar content ">
-            <a href="javascript:void(0);" onclick="alert('home');">Home</a>
+        <div id="navigation-bar" class="hidden navbar content">
+            <a href="javascript:void(0);" onclick="onWelcomeClicked();">Welcome</a>
+            <a href="javascript:void(0);" onclick="alert('profile');">My profile</a>
+            <a href="javascript:void(0);" onclick="alert('products');">Products</a>
+            <a href="javascript:void(0);" onclick="alert('cart');">Cart</a>
+            <a href="javascript:void(0);" onclick="alert('orders');">My orders </a>
+            <a href="javascript:void(0);" onclick="onLogoutButtonClicked();">Logout</a>
         </div>
         <div id="login-content" class="hidden content">
             <h1>Login</h1>
@@ -44,6 +51,9 @@
                 <button id="back-to-login-button">Back to login</button><br>
             </form>
         </div>
+        <div id="welcome-content" class="hidden content">
+            <h1>welcome</h1>
+            <h2>Products on sale : </h2>
         <script src="${authScriptUrl}"></script>
     </body>
 </html>
