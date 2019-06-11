@@ -14,6 +14,8 @@
         <c:url value="/util.js" var="utilScriptUrl"/>
         <c:url value="/welcome.js" var="welcomeScriptUrl"/>
         <c:url value="/auth.js" var="authScriptUrl"/>
+        <c:url value="/navigation.js" var="navigationScriptUrl"/>
+        <c:url value="/profile.js" var="profileScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${registerScriptUrl}"></script>
@@ -22,11 +24,15 @@
         <script src="${utilScriptUrl}"></script>
         <script src="${welcomeScriptUrl}"></script>
         <script src="${initScriptUrl}"></script>
+        <script src="${navigationScriptUrl}"></script>
+        <script src="${profileScriptUrl}"></script>
+        <script src="${authScriptUrl}"></script>
+
     </head>
     <body>
         <div id="navigation-bar" class="hidden navbar content">
             <a href="javascript:void(0);" onclick="onWelcomeClicked();">Welcome</a>
-            <a href="javascript:void(0);" onclick="alert('profile');">My profile</a>
+            <a href="javascript:void(0);" onclick="onProfileClicked();">My profile</a>
             <a href="javascript:void(0);" onclick="alert('products');">Products</a>
             <a href="javascript:void(0);" onclick="alert('cart');">Cart</a>
             <a href="javascript:void(0);" onclick="alert('orders');">My orders </a>
@@ -55,5 +61,23 @@
             <h1>welcome</h1>
             <h2>Products on sale : </h2>
         <script src="${authScriptUrl}"></script>
+        </div>
+        <div id = "profile-content" class="hidden content">
+            <h2>My Profile</h2>
+            <form id="profile-form" onsubmit="return false;">
+                <p class="inline">Name </p> <input type="text" name="name" placeholder="Name"><br>
+                <p class="inline">Email </p><input type="text" name="email" placeholder="Email" readonly><p class="inline"> (read only)</p><br>
+                
+                <h2>Address</h2>
+
+                <p class="inline">Country </p><input type="text" name="country"><br>
+                <p class="inline">Zip code </p><input type="text" name="zipCode"><br>
+                <p class="inline">City </p><input type="text" name="city"><br>
+                <p class="inline">Street </p><input type="text" name="street"><br>
+
+                <button id="cancel-profile-edit-button">Cancel</button>
+                <button id="update-profile-button">Update</button><br>
+            </form>
+        </div>
     </body>
 </html>
