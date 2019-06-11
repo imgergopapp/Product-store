@@ -24,6 +24,8 @@ function onLoginResponse(){
         const user = JSON.parse(this.responseText);
         console.log(user);
         setAuthorization(user);
+        // set nav bar elements by user role
+        showContents(['navigation-bar','welcome-content'])
     } else {
         onOtherResponse(loginContentDivEl, this);
     }
