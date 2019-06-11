@@ -29,7 +29,7 @@ public class RegisterServlet extends AbstractServlet {
             req.setAttribute("user", userService.findByEmail(email));
 
         } catch (SQLException se) {
-            handleSqlError(resp, se, false);
+            handleError(resp, se, false);
         }
     }
 }

@@ -30,7 +30,7 @@ public class LoginServlet extends AbstractServlet {
             req.getSession().setAttribute("user", user);
             sendMessage(resp, HttpServletResponse.SC_OK, user);
         } catch (SQLException se) {
-            handleSqlError(resp, se, false);
+            handleError(resp, se, false);
         }
     }
 }

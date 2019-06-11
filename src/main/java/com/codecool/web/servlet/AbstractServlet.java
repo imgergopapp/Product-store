@@ -29,7 +29,7 @@ abstract class AbstractServlet extends HttpServlet {
         om.writeValue(resp.getOutputStream(), object);
     }
 
-    void handleSqlError(HttpServletResponse resp, Exception ex, boolean isServerSide) throws IOException {
+    void handleError(HttpServletResponse resp, Exception ex, boolean isServerSide) throws IOException {
         int responseStatusCode = isServerSide ? HttpServletResponse.SC_INTERNAL_SERVER_ERROR : HttpServletResponse.SC_BAD_REQUEST;
         sendMessage(resp, responseStatusCode , ex.getMessage());
         ex.printStackTrace();
