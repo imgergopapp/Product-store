@@ -2,6 +2,22 @@
     background-color: #333;
     overflow: hidden;
   }
+
+  .hidden {
+    display: none;
+}
+
+.inline {
+  display: inline;
+}
+
+.error {
+  color: red;
+}
+
+.info {
+  color: blue;
+}
   
   /* Style the links inside the navigation bar */
   .navbar a {
@@ -23,8 +39,4 @@
   .navbar a.active {
     background-color: #4CAF50;
     color: white;
-  }
-
-  .hidden {
-      display: none;
   }
