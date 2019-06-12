@@ -60,6 +60,22 @@ function onProfileUpdateClicked(){
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onProfileUpdateResponse);
     xhr.addEventListener('error', onNetworkError);
-    xhr.open('PUT', 'protected/profile');
-    xhr.send(params);
+    xhr.open('PUT', 'protected/profile?'+ params.toString());
+    xhr.send();
 }
+
+function onProfileUpdateResponse(){
+    if (this.status === OK) {
+        setUnauthorized();
+
+        const user = JSON.parse(this.responseText);
+        console.log(user);
+        setAuthorization(user);
+        // set nav bar elements by user role
+        onProfileClicked();
+        newMessage(profileContentDivEl,'info','Profile updated successfully');
+    } else {
+        onOtherResponse(profileContentDivEl, this);
+    }
+}
+
