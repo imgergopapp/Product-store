@@ -79,28 +79,18 @@ function onOtherResponse(targetEl, xhr) {
     }
 }
 
-function createCheckBoxTd(name, value) {
-    const checkBoxEl = document.createElement('input')
-    checkBoxEl.setAttribute('type', 'checkbox')
-    checkBoxEl.setAttribute('name', name)
-    checkBoxEl.setAttribute('value', value)
-
-    const tdEl = document.createElement('td')
-    tdEl.appendChild(checkBoxEl)
-    return tdEl
+function createImgElement(url, width, height) {
+    img = document.createElement('img');
+    img.src = url;
+    img.width = width;
+    img.height = height;
+    return img;
 }
 
-function getCheckBoxCheckedValues(checkBoxName) {
-    const checkBoxEls = document.getElementsByName(checkBoxName);
-    let values = [];
-    for (let i = 0; i < checkBoxEls.length; i++) {
-        const checkboxEl = checkBoxEls.item(i);
-        if (checkboxEl.checked) {
-            values.push(checkboxEl.value);
-        }
-    }
-    const valuesStrChain = values.join(',');
-    return valuesStrChain;
+function createLiElement(text) {
+    liEl = document.createElement('li');
+    liEl.innerHTML = text;
+    return liEl;
 }
 
 function hasAuthorization() {
