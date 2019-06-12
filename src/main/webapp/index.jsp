@@ -79,5 +79,6 @@
         </div>
         <div id = "product-page-content" class="hidden content">
         </div>
+        <script src="${authScriptUrl}"></script>
     </body>
 </html>
