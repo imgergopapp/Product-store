@@ -53,8 +53,7 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
     private Product fetchProduct(ResultSet resultSet) throws SQLException {
         int id = resultSet.getInt("product_id");
         String productName = resultSet.getString("product_name");
-        String mainCategory = resultSet.getString("main_category");
-        String subCategory = resultSet.getString("sub_category");
+        String category = resultSet.getString("category");
         String properties = resultSet.getString("properties");
         String company = resultSet.getString("product_company");
         int price = resultSet.getInt("product_price");
@@ -62,6 +61,6 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
         int salePercentage = resultSet.getInt("sale_percentage");
         String pictureUrl = resultSet.getString("picture_url");
 
-        return new Product(id,productName,mainCategory,subCategory,properties,company,price,inStock,salePercentage,pictureUrl);
+        return new Product(id,productName,category,properties,company,price,inStock,salePercentage,pictureUrl);
     }
 }

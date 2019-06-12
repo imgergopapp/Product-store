@@ -3,8 +3,7 @@ package com.codecool.web.model;
 public class Product {
     private int productId;
     private String productName;
-    private String mainCategory;
-    private String subCategory;
+    private String category;
     private String properties;
     private String productCompany;
     private int price;
@@ -12,12 +11,11 @@ public class Product {
     private int salePercentage;
     private String pictureUrl;
 
-    public Product(int productId, String productName, String mainCategory, String subCategory, String properties,
+    public Product(int productId, String productName, String category, String properties,
                    String productCompany, int price, int inStock, int salePercentage, String pictureUrl) {
         this.productId = productId;
         this.productName = productName;
-        this.mainCategory = mainCategory;
-        this.subCategory = subCategory;
+        this.category = category;
         this.properties = properties;
         this.productCompany = productCompany;
         this.price = price;
@@ -34,12 +32,8 @@ public class Product {
         return productName;
     }
 
-    public String getMainCategory() {
-        return mainCategory;
-    }
-
-    public String getSubCategory() {
-        return subCategory;
+    public String getCategory() {
+        return category;
     }
 
     public String getProperties() {
