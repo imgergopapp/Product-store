@@ -123,9 +123,9 @@ CREATE TRIGGER order_completion_date_check BEFORE INSERT OR UPDATE ON orders
 	FOR EACH ROW EXECUTE PROCEDURE order_completion_date_check();
 
 INSERT INTO users (user_name, password, email, role, country, zip_code, city, street) VALUES
-	('Mr. A', crypt('a', gen_salt('bf', 9)), 'a', 'REGULAR', 'Hungary', 4000,'city1','Some street, 8'), --1
-	('user2', crypt('pw2', gen_salt('bf', 9)), 'user2@user2.com', 'RETAILER', 'Hungary', 5000,'city2','Cool street, 18'), --2
-	('user1', crypt('pw2', gen_salt('bf', 9)), 'user1@user1.com', 'ADMIN', 'Hungary', 6000,'city3','Cooler street, 81'); --3
+	('Mr. A', crypt('a', gen_salt('bf', 9)), 'a', 'REGULAR', 'Hungary', 4000,'citya','Some street, 8'), --1
+	('user2', crypt('pw2', gen_salt('bf', 9)), 'user2@user2.com', 'RETAILER', 'Hungary', 5000,'cityb','Cool street, 18'), --2
+	('user1', crypt('pw2', gen_salt('bf', 9)), 'user1@user1.com', 'ADMIN', 'Hungary', 6000,'cityb','Cooler street, 81'); --3
 
 INSERT INTO products (product_name, main_category, sub_category, properties, product_company, product_price, in_stock, is_on_sale, picture_url) VALUES
     ('z-301 ', 'it', 'processor', 'small;fast', 'That company', 1000, 10, true,'https://cdn.pixabay.com/photo/2019/05/31/16/01/cpu-4242470_1280.jpg'), --1
