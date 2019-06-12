@@ -40,7 +40,7 @@ function showProducts(products) {
 
 function generateImgTdElement(product) {
     tdImgEl = document.createElement('td');
-    img = createImgElement(product.pictureUrl, 250, 250)
+    img = createImgElement(product.pictureUrl, 150, 150)
     img.onclick = function () { showProductPage(product) };
     tdImgEl.appendChild(img);
     return tdImgEl;
@@ -72,14 +72,11 @@ function showProductPage(product) {
     buyButtonEl.onclick = function () { onBuyProductButtonClicked(product.productId) };
     buyButtonEl.innerHTML = "Buy product!";
 
-    //removeAllChildren(productsTableEl);
     h2El = document.createElement('h2');
     h2El.innerHTML = product.productName;
 
-    imgEl = createImgElement(product.pictureUrl, 500, 500)
-
     ulEl = document.createElement('ul');
-    ulEl.appendChild(imgEl);
+    ulEl.appendChild(createImgElement(product.pictureUrl, 350, 350));
     ulEl.appendChild(createLiElement(product.category));
     ulEl.appendChild(createLiElement(product.properties));
     ulEl.appendChild(createLiElement('Price: ' + product.price));
