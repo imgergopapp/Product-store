@@ -118,7 +118,7 @@ INSERT INTO products (product_name, category, properties, product_company, produ
     ('z-301 ', 'processor', 'small;fast', 'That company', 1000, 10, 10,'https://cdn.pixabay.com/photo/2019/05/31/16/01/cpu-4242470_1280.jpg'), --1
     ('qh-3 ', 'processor', 'ultra-small;ultra-fast', 'This company', 2000, 5, 20, 'https://cdn.pixabay.com/photo/2017/04/10/07/57/processor-2217771_1280.jpg'), --2
     ('mxm-2', 'processor', 'nano;hyper-fast', 'That company', 2500, 10, 0, 'https://cdn.pixabay.com/photo/2017/12/09/11/16/electronics-3007664_1280.jpg'), --3
-    ('srs2000', 'hdd', 'very-hard disk drive; very fast', 'One man company', 500, 11, 0, 'https://cdn.pixabay.com/photo/2013/07/12/19/16/hdd-154463_1280.png'), --4
+    ('srs2000', 'hdd', 'very-hard disk drive; very fast', 'One man company', 500, 11, 0, 'https://cdn.pixabay.com/photo/2013/07/12/19/16/hdd-154463_1280.png'); --4
 
 INSERT INTO carts (product_id, user_id, quantity, products_price) VALUES
 	(1, 1, 3, 4500), --1
