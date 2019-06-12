@@ -4,6 +4,7 @@ function onLoad() {
     logoutContentDivEl = document.getElementById('logout-content');
     welcomeContentDivEl = document.getElementById('welcome-content');
     profileContentDivEl = document.getElementById('profile-content');
+    productsContentDivEl = document.getElementById('products-content');
 
     // Login
     const loginButtonEl = document.getElementById('login-button');
