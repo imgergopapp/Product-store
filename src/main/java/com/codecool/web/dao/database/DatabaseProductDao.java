@@ -1,12 +1,7 @@
 package com.codecool.web.dao.database;
 
 import com.codecool.web.dao.ProductDao;
-import com.codecool.web.dao.UserDao;
-import com.codecool.web.dao.parser.DaoParser;
-import com.codecool.web.model.Address;
 import com.codecool.web.model.Product;
-import com.codecool.web.model.Role;
-import com.codecool.web.model.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -34,10 +29,9 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
     @Override
     public List<Product> findAllProducts(boolean isOnSale) throws SQLException {
         String sql;
-        if (isOnSale){
+        if (isOnSale) {
             sql = "SELECT * FROM products WHERE sale_percentage > 0";
-        }
-        else {
+        } else {
             sql = "SELECT * FROM products ";
         }
         try (Statement statement = connection.createStatement();
@@ -55,12 +49,11 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
         String productName = resultSet.getString("product_name");
         String category = resultSet.getString("category");
         String properties = resultSet.getString("properties");
-        String company = resultSet.getString("product_company");
         int price = resultSet.getInt("product_price");
         int inStock = resultSet.getInt("in_stock");
         int salePercentage = resultSet.getInt("sale_percentage");
         String pictureUrl = resultSet.getString("picture_url");
 
-        return new Product(id,productName,category,properties,company,price,inStock,salePercentage,pictureUrl);
+        return new Product(id, productName, category, properties, price, inStock, salePercentage, pictureUrl);
     }
 }

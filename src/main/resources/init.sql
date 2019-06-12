@@ -29,7 +29,6 @@ CREATE TABLE products(
 	product_name VARCHAR(100),
 	category VARCHAR(40),
 	properties VARCHAR(200),
-	product_company VARCHAR(40),
 	product_price INTEGER,
 	in_stock INTEGER,
 	sale_percentage NUMERIC(2) DEFAULT 0,
@@ -114,11 +113,11 @@ INSERT INTO users (user_name, password, email, role, country, zip_code, city, st
 	('user2', crypt('pw2', gen_salt('bf', 9)), 'user2@user2.com', 'RETAILER', 'Hungary', 5000,'cityb','Cool street, 18'), --2
 	('user1', crypt('pw2', gen_salt('bf', 9)), 'user1@user1.com', 'ADMIN', 'Hungary', 6000,'cityb','Cooler street, 81'); --3
 
-INSERT INTO products (product_name, category, properties, product_company, product_price, in_stock, sale_percentage, picture_url) VALUES
-    ('z-301 ', 'processor', 'small;fast', 'That company', 1000, 10, 10,'https://cdn.pixabay.com/photo/2019/05/31/16/01/cpu-4242470_1280.jpg'), --1
-    ('qh-3 ', 'processor', 'ultra-small;ultra-fast', 'This company', 2000, 5, 20, 'https://cdn.pixabay.com/photo/2017/04/10/07/57/processor-2217771_1280.jpg'), --2
-    ('mxm-2', 'processor', 'nano;hyper-fast', 'That company', 2500, 10, 0, 'https://cdn.pixabay.com/photo/2017/12/09/11/16/electronics-3007664_1280.jpg'), --3
-    ('srs2000', 'hdd', 'very-hard disk drive; very fast', 'One man company', 500, 11, 0, 'https://cdn.pixabay.com/photo/2013/07/12/19/16/hdd-154463_1280.png'); --4
+INSERT INTO products (product_name, category, properties, product_price, in_stock, sale_percentage, picture_url) VALUES
+    ('z-301 ', 'processor', 'small;fast', 1000, 10, 10,'https://cdn.pixabay.com/photo/2019/05/31/16/01/cpu-4242470_1280.jpg'), --1
+    ('qh-3 ', 'processor', 'ultra-small;ultra-fast', 2000, 5, 20, 'https://cdn.pixabay.com/photo/2017/04/10/07/57/processor-2217771_1280.jpg'), --2
+    ('mxm-2', 'processor', 'nano;hyper-fast', 2500, 10, 0, 'https://cdn.pixabay.com/photo/2017/12/09/11/16/electronics-3007664_1280.jpg'), --3
+    ('srs2000', 'hdd', 'very-hard disk drive; very fast', 500, 11, 0, 'https://cdn.pixabay.com/photo/2013/07/12/19/16/hdd-154463_1280.png'); --4
 
 INSERT INTO carts (product_id, user_id, quantity, products_price) VALUES
 	(1, 1, 3, 4500), --1

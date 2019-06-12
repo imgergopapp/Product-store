@@ -5,19 +5,18 @@ public class Product {
     private String productName;
     private String category;
     private String properties;
-    private String productCompany;
     private int price;
     private int inStock;
     private int salePercentage;
     private String pictureUrl;
 
     public Product(int productId, String productName, String category, String properties,
-                   String productCompany, int price, int inStock, int salePercentage, String pictureUrl) {
+                   int price, int inStock, int salePercentage, String pictureUrl) {
+
         this.productId = productId;
         this.productName = productName;
         this.category = category;
         this.properties = properties;
-        this.productCompany = productCompany;
         this.price = price;
         this.inStock = inStock;
         this.salePercentage = salePercentage;
@@ -38,10 +37,6 @@ public class Product {
 
     public String getProperties() {
         return properties;
-    }
-
-    public String getProductCompany() {
-        return productCompany;
     }
 
     public int getPrice() {
