@@ -32,8 +32,13 @@ public class SimpleUserService implements UserService {
     }
 
     @Override
+    public boolean isRegistered(String email, String password) throws SQLException {
+        return userDao.isRegistered(email,password);
+    }
+
+    @Override
     public User updateProfile(String name, String email, Address address) throws ServiceException, SQLException {
-        if (isProfileChanged(null,null,null)){
+        if (isProfileChanged(null,null,null) && isValidAddress(address)){
             userDao.updateProfile(name, email, address);
             return findByEmail(email);
         }
@@ -46,6 +51,44 @@ public class SimpleUserService implements UserService {
     private boolean isProfileChanged(User user, String newName, Address newAddres){
        // if ()
         return true; // TODO : implement
+    }
+
+    private boolean isValidAddress(Address address) throws ServiceException{
+        String msg = "";
+        if (isNotAlphabetic(address.getCountry())){
+            msg+="Invalid country! Use only alphabetic characters!\n";
+        }
+        if (isNotAlphabetic(address.getCity())){
+            msg+="Invalid city! Use only alphabetic characters!\n";
+        }
+        if (isNotNumeric(address.getZipCode())){
+            msg+="Invalid zip code! Use only numbers!";
+        }
+
+        if (msg.equals("")){
+            return true;
+        }
+        else{
+            throw new ServiceException(msg);
+        }
+    }
+
+    private boolean isNotAlphabetic(String word){
+        for (char c : word.toCharArray()){
+            if (!Character.isAlphabetic(c)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isNotNumeric(String word){
+        for (char c : word.toCharArray()){
+            if (!Character.isDigit(c)){
+                return true;
+            }
+        }
+        return false;
     }
 
 
