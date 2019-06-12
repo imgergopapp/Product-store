@@ -5,6 +5,7 @@ function onLoad() {
     welcomeContentDivEl = document.getElementById('welcome-content');
     profileContentDivEl = document.getElementById('profile-content');
     productsContentDivEl = document.getElementById('products-content');
+    productPageContentDivEl = document.getElementById('product-page-content');
 
     // Login
     const loginButtonEl = document.getElementById('login-button');
@@ -26,8 +27,6 @@ function onLoad() {
 
     const onProfileUpdateButtonEl = document.getElementById('update-profile-button');
     onProfileUpdateButtonEl.addEventListener('click', onProfileUpdateClicked);
-
-    
 
 }
 
