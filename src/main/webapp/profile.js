@@ -1,7 +1,7 @@
 function onProfileClicked() {
     clearMessages();
     showContents(['navigation-bar', 'profile-content']);
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = getAuthorization();
 
     const profileFormEl = document.getElementById('profile-form');
 
@@ -27,7 +27,7 @@ function onProfileClicked() {
 function onCancelProfileEditClicked(){
     onProfileClicked();
     const profileElementDiv = document.getElementById('profile-content');
-    newMessage(profileElementDiv,'info','Removed unsaved changes');
+    newMessage(profileElementDiv,'info','Removed unsaved changes.');
 }
 
 function onProfileUpdateClicked(){
