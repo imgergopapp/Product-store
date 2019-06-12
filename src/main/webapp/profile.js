@@ -15,7 +15,7 @@ function onProfileClicked() {
     countryInputEl.value = user.address.country;
 
     const zipCodeInputEl = profileFormEl.querySelector('input[name="zipCode"]');
-    zipCodeInputEl.value = user.address.zip_code;
+    zipCodeInputEl.value = user.address.zipCode;
 
     const cityInputEl = profileFormEl.querySelector('input[name="city"]');
     cityInputEl.value = user.address.city;
@@ -33,23 +33,32 @@ function onCancelProfileEditClicked(){
 function onProfileUpdateClicked(){
     const profileFormEl = document.getElementById('profile-form');
 
-    const nameInputEl = loginFormEl.querySelector('input[name="name"]');
-    const emailInputEl = loginFormEl.querySelector('input[name="email"]');
-    const countryInputEl = loginFormEl.querySelector('input[name="country"]');
-    const zipCodeInputEl = loginFormEl.querySelector('input[name="zipCode"]');
-    const cityInputEl = loginFormEl.querySelector('input[name="city"]');
-    const streetInputEl = loginFormEl.querySelector('input[name="street"]');
+    const nameInputEl = profileFormEl.querySelector('input[name="name"]');
+    const emailInputEl = profileFormEl.querySelector('input[name="email"]');
+    const countryInputEl = profileFormEl.querySelector('input[name="country"]');
+    const zipCodeInputEl = profileFormEl.querySelector('input[name="zipCode"]');
+    const cityInputEl = profileFormEl.querySelector('input[name="city"]');
+    const streetInputEl = profileFormEl.querySelector('input[name="street"]');
+    
+
+    const name = nameInputEl.value;
+    const email = emailInputEl.value;
+    const country = countryInputEl.value;
+    const zipCode = zipCodeInputEl.value;
+    const city = cityInputEl.value;
+    const street = streetInputEl.value;
+
 
     const params = new URLSearchParams();
-    params.append('name', nameInputEl.value);
-    params.append('email', emailInputEl.value);
-    params.append('country', countryInputEl.value);
-    params.append('zipCode', zipCodeInputEl.value);
-    params.append('city', cityInputEl.value);
-    params.append('street', streetInputEl.value);
+    params.append('name', name);
+    params.append('email', email);
+    params.append('country', country);
+    params.append('zipCode', zipCode);
+    params.append('city', city);
+    params.append('street', street);
 
     const xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', onLoginResponse);
+    xhr.addEventListener('load', onProfileUpdateResponse);
     xhr.addEventListener('error', onNetworkError);
     xhr.open('PUT', 'protected/profile');
     xhr.send(params);
