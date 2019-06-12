@@ -15,4 +15,5 @@ public interface UserService {
 
     User updateProfile(String name, String email, Address address) throws ServiceException, SQLException;
 
+    boolean isRegistered(String email, String password) throws SQLException;
 }
