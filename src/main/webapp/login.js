@@ -25,7 +25,7 @@ function onLoginResponse(){
         console.log(user);
         setAuthorization(user);
         // set nav bar elements by user role
-        showContents(['navigation-bar','welcome-content'])
+        onProductsClicked();
     } else {
         onOtherResponse(loginContentDivEl, this);
     }

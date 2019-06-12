@@ -26,12 +26,10 @@
         <script src="${navigationScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
         <script src="${productsScriptUrl}"></script>
-        <script src="${authScriptUrl}"></script>
 
     </head>
     <body>
         <div id="navigation-bar" class="hidden navbar content">
-            <a href="javascript:void(0);" onclick="onWelcomeClicked();">Welcome</a>
             <a href="javascript:void(0);" onclick="onProfileClicked();">My profile</a>
             <a href="javascript:void(0);" onclick="onProductsClicked();">Products</a>
             <a href="javascript:void(0);" onclick="alert('cart');">Cart</a>
@@ -56,11 +54,6 @@
                 <button id="registration-button">Register Account</button>
                 <button id="back-to-login-button">Back to login</button><br>
             </form>
-        </div>
-        <div id="welcome-content" class="hidden content">
-            <h1>welcome</h1>
-            <h2>Products on sale : </h2>
-        <script src="${authScriptUrl}"></script>
         </div>
         <div id = "profile-content" class="hidden content">
             <h2>My Profile</h2>
