@@ -16,6 +16,7 @@
         <c:url value="/auth.js" var="authScriptUrl"/>
         <c:url value="/navigation.js" var="navigationScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
+        <c:url value="/products.js" var="productsScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${registerScriptUrl}"></script>
@@ -26,6 +27,7 @@
         <script src="${initScriptUrl}"></script>
         <script src="${navigationScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
+        <script src="${productsScriptUrl}"></script>
         <script src="${authScriptUrl}"></script>
 
     </head>
@@ -33,7 +35,7 @@
         <div id="navigation-bar" class="hidden navbar content">
             <a href="javascript:void(0);" onclick="onWelcomeClicked();">Welcome</a>
             <a href="javascript:void(0);" onclick="onProfileClicked();">My profile</a>
-            <a href="javascript:void(0);" onclick="alert('products');">Products</a>
+            <a href="javascript:void(0);" onclick="onProductsClicked();">Products</a>
             <a href="javascript:void(0);" onclick="alert('cart');">Cart</a>
             <a href="javascript:void(0);" onclick="alert('orders');">My orders </a>
             <a href="javascript:void(0);" onclick="onLogoutButtonClicked();">Logout</a>
@@ -78,6 +80,43 @@
                 <button id="cancel-profile-edit-button">Cancel</button>
                 <button id="update-profile-button">Update</button><br>
             </form>
+        </div>
+        <div id = "products-content" class="hidden content">
+            <h2>Products</h2>
+            <table border="1" id  = "products-table">
+                <tr>
+                    <td>
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8IDQ0NFREWFhURFRMYHSggGBolGxMTITEhMSk3Li46Fx8zODM4NygtLisBCgoKDQ0NDw0NDysZFRkrKystLS03Ny03Ky0rKystNzcrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALUBFwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIHA//EABUQAQEAAAAAAAAAAAAAAAAAAAAB/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECBAYD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwDkCg9DjjAFFAXEFBUAABRRBQEFAEVAAEEFQURRMEATFEVEwAGaoioxYoAzYADGK0A7GBQVAUUABBUUAAAUBBQEFAQAEFQBFRFEUQQBFQVGaoAzRAGaoAwNKiupgVFaAAQUAAUABQAEAABUAAFQVEEFQBFRFQVEBFRmqAM1UAZqgDA0oOpgUFBUUQAAUFAAQFAAVREUQQVAEUFRFEERQVEVEBFGVQBlUFRiqAMjYK6WAFVAAFAUAUQAAUBABQABBQGRURRFRFQVAQBKqAMqgDNURRmqgDA9BFdL5ioqgqAKAqCooCoAoAgAoAAAAiKiKIqIoioCAJVQKM1UAZqgDNVAGBtUHSwoCooigogooAiiAKACiCooACAKICCAiKAgoiolAEZqgDNUEGKoAyNgOlhQFQABQFBUUAAQVFAAUAAEBARUFEBAQBUAZqiKiUAGaqAMVQBkbIiulhRBRQBFEAURVFEAUQEUEBQQFEBQEQKCCgIgAiKAMqAjNABiqCDKtgOlhRFVBUFFAAAAVARRAFEAUQBUAAEFARAARRAZABFEBmqIoxQAY1VVB06yoiqgAuiiCoogCiKaKIGiiAKIAAhoogmqAJoAiaACVQBm1RAYtABm1QUYtUAdMYFBYACgAqAAAooACAAAAIAigAADKiAgAJVAGRAGKqgMVQBgf//Z" height="250" width="250">
+                    </td>
+                    <td>
+                        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBw0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ8IDQ0NFREWFhURFRMYHSggGBolGxMTITEhMSk3Li46Fx8zODM4NygtLisBCgoKDQ0NDw0NDysZFRkrKystLS03Ny03Ky0rKystNzcrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIALUBFwMBIgACEQEDEQH/xAAYAAEBAQEBAAAAAAAAAAAAAAAAAQIHA//EABUQAQEAAAAAAAAAAAAAAAAAAAAB/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECBAYD/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAER/9oADAMBAAIRAxEAPwDkCg9DjjAFFAXEFBUAABRRBQEFAEVAAEEFQURRMEATFEVEwAGaoioxYoAzYADGK0A7GBQVAUUABBUUAAAUBBQEFAQAEFQBFRFEUQQBFQVGaoAzRAGaoAwNKiupgVFaAAQUAAUABQAEAABUAAFQVEEFQBFRFQVEBFRmqAM1UAZqgDA0oOpgUFBUUQAAUFAAQFAAVREUQQVAEUFRFEERQVEVEBFGVQBlUFRiqAMjYK6WAFVAAFAUAUQAAUBABQABBQGRURRFRFQVAQBKqAMqgDNURRmqgDA9BFdL5ioqgqAKAqCooCoAoAgAoAAAAiKiKIqIoioCAJVQKM1UAZqgDNVAGBtUHSwoCooigogooAiiAKACiCooACAKICCAiKAgoiolAEZqgDNUEGKoAyNgOlhQFQABQFBUUAAQVFAAUAAEBARUFEBAQBUAZqiKiUAGaqAMVQBkbIiulhRBRQBFEAURVFEAUQEUEBQQFEBQEQKCCgIgAiKAMqAjNABiqCDKtgOlhRFVBUFFAAAAVARRAFEAUQBUAAEFARAARRAZABFEBmqIoxQAY1VVB06yoiqgAuiiCoogCiKaKIGiiAKIAAhoogmqAJoAiaACVQBm1RAYtABm1QUYtUAdMYFBYACgAqAAAooACAAAAIAigAADKiAgAJVAGRAGKqgMVQBgf//Z" height="250" width="250">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        name
+                    </td>
+                    <td>
+                        name
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        category1
+                    </td>
+                    <td>
+                        category2
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        price1
+                    </td>
+                    <td>
+                        price2
+                    </td>
+                </tr>
+            </table>
         </div>
     </body>
 </html>
