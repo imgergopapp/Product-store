@@ -21,7 +21,7 @@ public class SimpleProductService implements ProductService {
     }
 
     @Override
-    public List<Product> findAllProducts(boolean findOnlyOnSale) throws SQLException {
-        return productDao.findAllProducts(findOnlyOnSale);
+    public List<Product> findAllProducts(boolean isOnSale) throws SQLException {
+        return productDao.findAllProducts(isOnSale);
     }
 }

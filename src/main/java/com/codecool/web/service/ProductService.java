@@ -9,6 +9,6 @@ public interface ProductService {
 
     Product findById(int id) throws SQLException;
 
-    List<Product> findAllProducts(boolean findOnlyOnSale) throws SQLException;
+    List<Product> findAllProducts(boolean isOnSale) throws SQLException;
 
 }

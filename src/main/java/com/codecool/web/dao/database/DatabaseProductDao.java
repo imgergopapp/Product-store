@@ -32,9 +32,9 @@ public class DatabaseProductDao extends AbstractDao implements ProductDao {
     }
 
     @Override
-    public List<Product> findAllProducts(boolean findOnlyOnSale) throws SQLException {
+    public List<Product> findAllProducts(boolean isOnSale) throws SQLException {
         String sql;
-        if (findOnlyOnSale){
+        if (isOnSale){
             sql = "SELECT * FROM products WHERE sale_percentage > 0";
         }
         else {
