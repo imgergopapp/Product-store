@@ -23,8 +23,6 @@ function showProducts(products) {
     productsTableEl = document.getElementById('products-table');
     removeAllChildren(productsTableEl);
 
-    trEl = document.createElement('tr');
-
     for (let i = 0; i < products.length; i++) {
         let product = products[i];
         trEl = document.createElement('tr');
