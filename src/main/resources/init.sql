@@ -36,26 +36,24 @@ CREATE TABLE products(
 );
 
 CREATE TABLE carts(
-	cart_id SERIAL PRIMARY KEY,
     product_id INTEGER,
     user_id INTEGER,
-    quantity INTEGER,
-    products_price MONEY
+    quantity INTEGER DEFAULT 1,
+    products_price INTEGER
 );
 
 CREATE TABLE transporters(
  	transporter_id SERIAL PRIMARY KEY,
     transporter_company VARCHAR(40),
- 	transporter_price MONEY,
+ 	transporter_price INTEGER,
  	zip_code_range_from NUMERIC(4),
     zip_code_range_to NUMERIC(4)
  );
 
 CREATE TABLE orders(
 	order_id SERIAL PRIMARY KEY,
-    cart_id INTEGER,
 	transporter_id INTEGER,
-	total_price MONEY,
+	total_price INTEGER,
     order_date DATE,
     status VARCHAR(20),
     completion_date DATE
@@ -66,7 +64,6 @@ ALTER TABLE carts
 	ADD CONSTRAINT carts_fk_user_id FOREIGN KEY (user_id) REFERENCES users(user_id);
 
 ALTER TABLE orders
-	ADD CONSTRAINT orders_fk_cart_id FOREIGN KEY (cart_id) REFERENCES carts(cart_id),
 	ADD CONSTRAINT orders_fk_transported_id FOREIGN KEY (transporter_id) REFERENCES transporters(transporter_id);
 
 CREATE FUNCTION products_in_stock_check() RETURNS trigger
@@ -129,7 +126,7 @@ INSERT INTO transporters (transporter_company, transporter_price, zip_code_range
 	('Mike-trans', 1500, 2000, 3000), --2
     ('Trans2000', 3000, 3000, 5000); --3
 
-INSERT INTO orders (cart_id, transporter_id, total_price, order_date, status, completion_date) VALUES
-	(1, 1, 33000, '2019.05.22', 'DELIVERING', null), --1
-	(2, 1, 12000, '2019.05.11', 'DELIVERING', null), --2
-	(3, 2, 5532, '2019.05.23', 'DELIVERING', null); --3
+INSERT INTO orders (transporter_id, total_price, order_date, status, completion_date) VALUES
+	(1, 33000, '2019.05.22', 'DELIVERING', null), --1
+	(1, 12000, '2019.05.11', 'DELIVERING', null), --2
+	(2, 5532, '2019.05.23', 'DELIVERING', null); --3
