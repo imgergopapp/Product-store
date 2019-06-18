@@ -88,6 +88,21 @@ function showProductPage(product) {
 }
 
 function onBuyProductButtonClicked(id) {
-    // TODO 
-    alert(id);
+    const params = new URLSearchParams();
+    params.append('productId', id);
+
+    const xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', onBuyProductResponse);
+    xhr.addEventListener('error', onNetworkError);
+    xhr.open('PUT', 'protected/cart?' + params.toString());
+    xhr.send();
+}
+
+function onBuyProductResponse() {
+    if (this.status === OK) {
+        const cartItem = JSON.parse(this.responseText);
+        newInfo(productPageContentDivEl, 'There is/are ' + cartItem.quantity+ ' pieces of' + cartItem.productName + ' in the cart');
+    } else {
+        onOtherResponse(productPageContentDivEl, this);
+    }
 }
