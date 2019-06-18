@@ -1,7 +1,7 @@
 function onProductsClicked() {
     const params = new URLSearchParams();
     params.append('isOnSale', 'false');
-    
+
     const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onProductsResponse);
     xhr.addEventListener('error', onNetworkError);
@@ -101,7 +101,7 @@ function onBuyProductButtonClicked(id) {
 function onBuyProductResponse() {
     if (this.status === OK) {
         const cartItem = JSON.parse(this.responseText);
-        newInfo(productPageContentDivEl, 'There is/are ' + cartItem.quantity+ ' piece(s) of ' + cartItem.productName + ' in the cart');
+        newInfo(productPageContentDivEl, 'There is/are ' + cartItem.quantity + ' piece(s) of ' + cartItem.productName + ' in the cart');
     } else {
         onOtherResponse(productPageContentDivEl, this);
     }
