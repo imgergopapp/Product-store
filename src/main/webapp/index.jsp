@@ -16,6 +16,7 @@
         <c:url value="/products.js" var="productsScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
         <c:url value="/cart.js" var="cartScriptUrl"/>
+        <c:url value="/order.js" var="orderScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${registerScriptUrl}"></script>
@@ -26,6 +27,7 @@
         <script src="${profileScriptUrl}"></script>
         <script src="${productsScriptUrl}"></script>
         <script src="${cartScriptUrl}"></script>
+        <script src="${orderScriptUrl}"></script>
 
     </head>
     <body>
@@ -91,6 +93,7 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <br> <button id="order-button">Order!</button> <br>
         </div>
         <script src="${authScriptUrl}"></script>
     </body>
