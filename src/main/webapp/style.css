@@ -18,6 +18,7 @@
 
 .info {
   color: blue;
+  white-space: pre-line;
 }
   
 /* Style the links inside the navigation bar */
