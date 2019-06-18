@@ -13,9 +13,9 @@
         <c:url value="/logout.js" var="logoutScriptUrl"/>
         <c:url value="/util.js" var="utilScriptUrl"/>
         <c:url value="/auth.js" var="authScriptUrl"/>
-        <c:url value="/navigation.js" var="navigationScriptUrl"/>
         <c:url value="/products.js" var="productsScriptUrl"/>
         <c:url value="/profile.js" var="profileScriptUrl"/>
+        <c:url value="/cart.js" var="cartScriptUrl"/>
 
         <link rel="stylesheet" type="text/css" href="${styleUrl}">
         <script src="${registerScriptUrl}"></script>
@@ -23,20 +23,20 @@
         <script src="${logoutScriptUrl}"></script>
         <script src="${utilScriptUrl}"></script>
         <script src="${initScriptUrl}"></script>
-        <script src="${navigationScriptUrl}"></script>
         <script src="${profileScriptUrl}"></script>
         <script src="${productsScriptUrl}"></script>
+        <script src="${cartScriptUrl}"></script>
 
     </head>
     <body>
         <div id="navigation-bar" class="hidden navbar content">
             <a href="javascript:void(0);" onclick="onProfileClicked();">My profile</a>
             <a href="javascript:void(0);" onclick="onProductsClicked();">Products</a>
-            <a href="javascript:void(0);" onclick="alert('cart');">Cart</a>
+            <a href="javascript:void(0);" onclick="onCartClicked();">Cart</a>
             <a href="javascript:void(0);" onclick="alert('orders');">My orders </a>
             <a href="javascript:void(0);" onclick="onLogoutButtonClicked();">Logout</a>
         </div>
-        <div id="login-content" class="hidden content">
+        <div id="login-content" class="content">
             <h1>Login</h1>
             <form id="login-form" onsubmit="return false;">
                 <input type="text" name="email" placeholder="Email">
@@ -78,6 +78,19 @@
             </table>
         </div>
         <div id = "product-page-content" class="hidden content">
+        </div>
+        <div id = "cart-content" class="hidden content">
+            <h2>Cart</h2>
+            <table border="1" id  = "cart-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
         </div>
         <script src="${authScriptUrl}"></script>
     </body>
