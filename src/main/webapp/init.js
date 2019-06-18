@@ -29,6 +29,9 @@ function onLoad() {
     const onProfileUpdateButtonEl = document.getElementById('update-profile-button');
     onProfileUpdateButtonEl.addEventListener('click', onProfileUpdateClicked);
 
+    //Cart
+    const orderButtonEl = document.getElementById('order-button');
+    orderButtonEl.addEventListener('click', onOrderClicked);
 }
 
 document.addEventListener('DOMContentLoaded', onLoad);
