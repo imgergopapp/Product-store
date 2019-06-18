@@ -6,6 +6,7 @@ function onLoad() {
     profileContentDivEl = document.getElementById('profile-content');
     productsContentDivEl = document.getElementById('products-content');
     productPageContentDivEl = document.getElementById('product-page-content');
+    cartContentDivEl = document.getElementById('cart-content');
 
     // Login
     const loginButtonEl = document.getElementById('login-button');
