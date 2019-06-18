@@ -7,7 +7,7 @@ function onCartClicked() {
     xhr.send();
 }
 
-function onCartResponse(){
+function onCartResponse() {
     if (this.status === OK) {
         clearMessages();
         showContents(['navigation-bar', 'cart-content']);
@@ -24,26 +24,30 @@ function showCart(cartDto) {
     const totalPrice = cartDto.totalPrice;
 
     removeAllChildren(cartTableBodyEl);
-   // removeAllChildren(cartTableEl);
+    document.getElementById("order-button").disabled = true;
+    let message = 'The cart is empty !';
+    if (cartItems.length > 0) {
+        for (let i = 0; i < cartItems.length; i++) {
+            let cartItem = cartItems[i];
+            trEl = document.createElement('tr');
 
-    for (let i = 0; i < cartItems.length; i++) {
-        let cartItem = cartItems[i];
-        trEl = document.createElement('tr');
+            tdNameEl = document.createElement('td');
+            tdNameEl.textContent = cartItem.productName;
 
-        tdNameEl = document.createElement('td');
-        tdNameEl.textContent = cartItem.productName;
+            tdQantityEl = document.createElement('td');
+            tdQantityEl.textContent = cartItem.quantity;
 
-        tdQantityEl = document.createElement('td');
-        tdQantityEl.textContent = cartItem.quantity;
+            tdPriceEl = document.createElement('td');
+            tdPriceEl.textContent = cartItem.price;
 
-        tdPriceEl = document.createElement('td');
-        tdPriceEl.textContent = cartItem.price;
+            trEl.appendChild(tdNameEl);
+            trEl.appendChild(tdQantityEl);
+            trEl.appendChild(tdPriceEl);
 
-        trEl.appendChild(tdNameEl);
-        trEl.appendChild(tdQantityEl);
-        trEl.appendChild(tdPriceEl);
-
-        cartTableBodyEl.appendChild(trEl);
+            cartTableBodyEl.appendChild(trEl);
+        }
+        message = 'Total price is ' + totalPrice;
+        document.getElementById("order-button").disabled = false;
     }
-    newInfo(cartContentDivEl, "Total price is " + totalPrice);
+    newInfo(cartContentDivEl, message);
 }
