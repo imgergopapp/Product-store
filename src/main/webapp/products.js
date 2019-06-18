@@ -101,7 +101,7 @@ function onBuyProductButtonClicked(id) {
 function onBuyProductResponse() {
     if (this.status === OK) {
         const cartItem = JSON.parse(this.responseText);
-        newInfo(productPageContentDivEl, 'There is/are ' + cartItem.quantity+ ' pieces of' + cartItem.productName + ' in the cart');
+        newInfo(productPageContentDivEl, 'There is/are ' + cartItem.quantity+ ' piece(s) of ' + cartItem.productName + ' in the cart');
     } else {
         onOtherResponse(productPageContentDivEl, this);
     }
