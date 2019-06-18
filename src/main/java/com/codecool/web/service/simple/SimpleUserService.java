@@ -55,14 +55,20 @@ public class SimpleUserService implements UserService {
 
     private boolean isValidAddress(Address address) throws ServiceException{
         String msg = "";
+        int zipCode = Integer.parseInt(address.getZipCode());
         if (isNotAlphabetic(address.getCountry())){
             msg+="Invalid country! Use only alphabetic characters!\n";
         }
+
         if (isNotAlphabetic(address.getCity())){
             msg+="Invalid city! Use only alphabetic characters!\n";
         }
+
         if (isNotNumeric(address.getZipCode())){
-            msg+="Invalid zip code! Use only numbers!";
+            msg+="Invalid zip code! Use only numbers!\n";
+        }
+        else if (zipCode < 0 || zipCode > 9999){
+            msg+="Invalid zip code! It must be between 0 and 10 000!";
         }
 
         if (msg.equals("")){
