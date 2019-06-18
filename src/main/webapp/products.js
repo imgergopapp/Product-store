@@ -1,11 +1,12 @@
 function onProductsClicked() {
     const params = new URLSearchParams();
     params.append('isOnSale', 'false');
-
+    
+    const xhr = new XMLHttpRequest();
     xhr.addEventListener('load', onProductsResponse);
     xhr.addEventListener('error', onNetworkError);
     xhr.open('GET', 'protected/allproducts?' + params.toString());
-    xhr.send(params);
+    xhr.send();
 }
 
 function onProductsResponse() {
@@ -45,8 +46,6 @@ function generateImgTdElement(product) {
     tdImgEl.appendChild(img);
     return tdImgEl;
 }
-
-
 
 function generateDetailTdElement(product) {
     tdDetailEl = document.createElement('td');
