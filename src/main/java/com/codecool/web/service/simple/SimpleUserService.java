@@ -55,7 +55,6 @@ public class SimpleUserService implements UserService {
 
     private boolean isValidAddress(Address address) throws ServiceException{
         String msg = "";
-        int zipCode = Integer.parseInt(address.getZipCode());
         if (isNotAlphabetic(address.getCountry())){
             msg+="Invalid country! Use only alphabetic characters!\n";
         }
@@ -67,7 +66,7 @@ public class SimpleUserService implements UserService {
         if (isNotNumeric(address.getZipCode())){
             msg+="Invalid zip code! Use only numbers!\n";
         }
-        else if (zipCode < 0 || zipCode > 9999){
+        else if (Integer.parseInt(address.getZipCode()) < 0 || Integer.parseInt(address.getZipCode()) > 9999){
             msg+="Invalid zip code! It must be between 0 and 10 000!";
         }
 
