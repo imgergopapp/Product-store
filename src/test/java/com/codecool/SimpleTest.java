@@ -7,9 +7,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class SimpleTest {
     @Test
-    @DisplayName("Simple test")
+    @DisplayName("Simple test1")
     void test1() {
-        assertEquals(true, true);
+        assertEquals(true, false);
     }
 }
 
