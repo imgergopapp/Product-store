@@ -1,5 +1,6 @@
 package com.codecool;
 
+import com.codecool.web.service.simple.TravicCiTestService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,7 +10,7 @@ class SimpleTest {
     @Test
     @DisplayName("Simple test1")
     void test1() {
-        assertEquals(true, false);
+        assertEquals(1, TravicCiTestService.test());
     }
 }
 
