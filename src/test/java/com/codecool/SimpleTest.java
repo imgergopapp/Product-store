@@ -1,0 +1,16 @@
+package com.codecool;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+class SimpleTest {
+    @Test
+    @DisplayName("Simple test")
+    void test1() {
+        assertEquals(true, true);
+    }
+}
+
+
