@@ -10,7 +10,6 @@ class SimpleTest {
     @DisplayName("Simple test1")
     void test1() {
         assertEquals(true, false);
-
     }
 }
 
